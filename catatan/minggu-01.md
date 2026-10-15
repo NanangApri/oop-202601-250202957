@@ -33,7 +33,7 @@ return "Halo Aset-Pinjam, nama saya " + nama + " dengan NIM: " + nim;
 ```
 
 kemudian setelah semuanya selesai saya menjalankan `.\scripts\uji.ps1`, dilanjutkan dengan mencatat hasil Minggu 01 di 
-/Users/LENOVO LOQ/oop-202601-250202957/catatan/minggu-01.md.
+`/Users/LENOVO LOQ/oop-202601-250202957/catatan/minggu-01.md`.
 
 ---
 ## Keputusan desain
