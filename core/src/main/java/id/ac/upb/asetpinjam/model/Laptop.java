@@ -41,6 +41,6 @@ public class Laptop extends Aset {
 
     @Override
     public long hitungDenda(int hariTerlambat) {
-        return 2L * super.hitungDenda(hariTerlambat);
+        return 2L * super.dendaDasar(hariTerlambat);
     }
 }

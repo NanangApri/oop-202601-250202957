@@ -77,17 +77,19 @@ public abstract class Aset implements DapatDipinjam {
     /** TODO minggu 5: true hanya jika status TERSEDIA dan kondisi bukan RUSAK_BERAT. */
     @Override
     public boolean bisaDipinjam() {
-        throw new UnsupportedOperationException("TODO minggu 5");
+        return status == StatusAset.TERSEDIA && kondisi != Kondisi.RUSAK_BERAT;
     }
 
     /** TODO minggu 3: dioverride tiap subclass agar mengembalikan jenis yang benar. */
     public abstract JenisAset getJenis();
 
     /** TODO minggu 4: denda keterlambatan. Dioverride tiap subclass (aturan di docs/aturan-bisnis.md). */
-    public long hitungDenda(int hariTerlambat) {
+    protected long dendaDasar(int hariTerlambat) {
         if (hariTerlambat < 0) {
             throw new IllegalArgumentException("Hari terlambat tidak boleh bernilai negatif.");
         }
         return (long) hariTerlambat * Varian.aktif().dendaPerHari;
     }
+
+    public abstract long hitungDenda(int hariTerlambat);
 }
