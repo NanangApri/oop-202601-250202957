@@ -1,4 +1,4 @@
-# Prinsip SOLID yang terlihat di kode
+# Prinsip SOLID yang terlihat
 
 Saya memilih tiga prinsip yang paling jelas terlihat di kode saat ini: OCP, LSP, dan DIP. Saya tidak memaksakan kelima prinsip kalau buktinya tidak ada. Untuk setiap prinsip, saya sebutkan kelas yang menjadi contoh dan alasan kenapa menurut saya kode itu memenuhi prinsip tersebut.
 
@@ -16,6 +16,6 @@ Ketiga kelas itu bisa dipakai di tempat `Aset` tanpa mengubah pemanggil. `Katalo
 
 `JdbcPeminjamanDAO` tidak membuat koneksi sendiri dan tidak membuat `JdbcAsetDAO` di dalam konstruktornya. Konstruktornya menerima `Supplier<Connection>` dan `AsetDAO`, jadi kelas ini bergantung pada abstraksi. Kalau tes membutuhkan database palsu, cukup berikan supplier dan DAO lain; kelas ini tidak perlu diubah. Contoh yang sama terlihat di `AsetService`: field-nya bertipe `AsetRepository`, bukan `InMemoryAsetRepository`, dan implementasinya diberikan lewat konstruktor. Itu sebabnya DIP membantu testability: tes bisa mengganti database dengan objek palsu tanpa menyentuh logika service.
 
-## Kenapa tidak ada refactor
+## Tdak ada refactor
 
-Saya tidak mengubah kode karena tiga prinsip di atas sudah terlihat dari struktur yang ada. Menambah kelas atau method baru justru berisiko membuat diagram berbeda dari kode dan masuk ke materi minggu berikutnya.
+Saya belum melakukan refactor karena pada tahap pengerjaan minggu ini belum ada kebutuhan untuk mengubah atau menambahkan bagian kode. Tiga prinsip SOLID yang dipilih juga sudah terlihat dari struktur kode yang ada. Selain itu, pengerjaan minggu ini lebih berfokus pada pembuatan diagram UML dan dokumentasi penerapan SOLID, sehingga perubahan kode belum diperlukan dan bisa dilakukan pada tahap pengembangan berikutnya jika memang dibutuhkan.
