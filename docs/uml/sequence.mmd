@@ -1,0 +1,24 @@
+sequenceDiagram
+    autonumber
+    actor P as Peminjam
+    participant J as jadwal:JadwalPeminjaman
+    participant B as baru:Peminjaman
+    participant L as peminjaman lama:Peminjaman
+
+    P->>J: ajukan(baru)
+    activate J
+    J->>J: bentrok(baru)
+    J->>B: getAset(), getMulai(), getSelesai()
+    B-->>J: aset, mulai, selesai
+    J->>L: getAset().getKode(), getMulai(), getSelesai()
+    L-->>J: aset, mulai, selesai
+    Note over J,L: untuk setiap peminjaman lama, bandingkan aset dan rentang waktu
+
+    alt bentrok = true
+        J-->>P: PeminjamanBentrokException
+        Note over J: baru tidak ditambahkan ke daftar
+    else bentrok = false
+        J->>J: tambah(baru)
+        J-->>P: selesai, status tetap DIAJUKAN
+    end
+    deactivate J
