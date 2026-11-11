@@ -29,6 +29,13 @@ Salin setiap pertanyaan ambigu (nomor 1 sampai 7) ke sini dan jawab. Contoh:
 
 Tambahkan di sini keputusan lain yang Anda ambil: rumus denda progresif, perubahan skema database, format error API, dan seterusnya.
 
+## A-01: batas waktu bentrok
+- Pertanyaan: 09:00-11:00 dan 11:00-13:00 pada aset yang sama bentrok atau tidak?
+- Keputusan: Tidak bentrok(false)
+- Alasan: karenaa sistem memeriksa apkah waktu mulai peminjaman baru lebih awal dari waktu selesai peminjaman lama dan sebaliknya. Karena kedua waktu hanya bertemu tepat pada batas selesai dan mulai, tidak ada waktu yang saling tumpang tindih.Karna kedua peminjaman tidak berlangsung pada waktu yang bersamaan. Jadi ini itu seperti peminjam pertama selesai meminjam laptop pukul 11.00, lalu peminjam kedua mulai meminjam pada pukul 11.00 tepat setelah peminjam pertama selesai, sehingga peminjam kedua tersebut bisa meminjam laptop tersebut tanpa bentrok. 
+- Dampak ke kode: `JadwalPeminjaman.java` –> `bentrok()` dan `ajukan()`, `BatasBentrokTest.java` –> `selesaiSamaDenganMulai()`
+- Tes yang membuktikan: `mahasiswa/BatasBentrokTest.java`, method `selesaiSamaDenganMulai`, `Minggu07JadwalTest.java`.
+
 ## A-02: Rumus denda progresif
 - Pertanyaan: Bagaimana denda bertambah seiring lama keterlambatan?
 - Keputusan: Denda = denda flat + (hari terlambat / 7) x denda satu hari. Setiap kelipatan 7 hari terlambat menambah denda sebesar satu hari.
